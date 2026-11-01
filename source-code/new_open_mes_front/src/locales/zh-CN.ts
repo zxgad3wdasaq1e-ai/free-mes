@@ -137,7 +137,8 @@ export default {
     slide: '向右滑动完成验证',
     point: '请依次点击',
     success: '验证成功',
-    fail: '验证失败'
+    fail: '验证失败',
+    loadFailed: '验证码加载失败，请点击右上角刷新重试'
   },
   router: {
     login: '登录',

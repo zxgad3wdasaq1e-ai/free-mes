@@ -137,7 +137,8 @@ export default {
     slide: 'Swipe right to complete verification',
     point: 'Please click',
     success: 'Verification succeeded',
-    fail: 'verification failed'
+    fail: 'verification failed',
+    loadFailed: 'Failed to load verification. Select refresh to retry.'
   },
   router: {
     login: 'Login',

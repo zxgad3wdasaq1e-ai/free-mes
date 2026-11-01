@@ -4,6 +4,7 @@ import cn.hutool.core.util.ClassUtil;
 import io.metaxk.framework.captcha.core.enums.CaptchaRedisKeyConstants;
 import io.metaxk.framework.captcha.core.service.RedisCaptchaServiceImpl;
 import com.xingyuv.captcha.service.CaptchaCacheService;
+import com.xingyuv.captcha.service.impl.CaptchaServiceFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -19,7 +20,12 @@ public class MetaxkCaptchaConfiguration {
 
     @Bean
     public CaptchaCacheService captchaCacheService(StringRedisTemplate stringRedisTemplate) {
-        return new RedisCaptchaServiceImpl(stringRedisTemplate);
+        CaptchaCacheService service = new RedisCaptchaServiceImpl(stringRedisTemplate);
+        // The captcha library loads its cache providers through ServiceLoader. Its
+        // Redis provider is not a Spring bean and therefore has no Redis template.
+        // Replace it with the fully configured instance before serving requests.
+        CaptchaServiceFactory.cacheService.put(service.type(), service);
+        return service;
     }
 
 }

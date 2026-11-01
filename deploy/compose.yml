@@ -39,6 +39,7 @@ services:
       SPRING_DATASOURCE_DYNAMIC_DATASOURCE_SLAVE_PASSWORD: ${DB_PASSWORD:?missing database password}
       SPRING_REDIS_HOST: redis
       SPRING_REDIS_PASSWORD: ""
+      METAXK_CAPTCHA_ENABLE: "true"
     volumes:
       - uploads:/data/uploads
     depends_on:

@@ -7,9 +7,11 @@
     >
       <div class="verify-img-panel" :style="{ width: setSize.imgWidth, height: setSize.imgHeight }">
         <img
+          v-if="backImgBase"
           :src="'data:image/png;base64,' + backImgBase"
           alt=""
           style="width: 100%; height: 100%; display: block"
+          @error="onImageError"
         />
         <div class="verify-refresh" @click="refresh" v-show="showRefresh">
           <i class="iconfont icon-refresh"></i>
@@ -61,9 +63,11 @@
             }"
           >
             <img
+              v-if="blockBackImgBase"
               :src="'data:image/png;base64,' + blockBackImgBase"
               alt=""
               style="width: 100%; height: 100%; display: block; -webkit-user-drag: none"
+              @error="onImageError"
             />
           </div>
         </div>
@@ -224,6 +228,7 @@ onMounted(() => {
 })
 //鼠标按下
 const start = (e) => {
+  if (!backToken.value || !backImgBase.value || !blockBackImgBase.value) return
   e = e || window.event
   if (!e.touches) {
     //兼容PC端
@@ -358,19 +363,49 @@ const refresh = async () => {
   }, 300)
 }
 
+const onImageError = () => {
+  backImgBase.value = ''
+  blockBackImgBase.value = ''
+  backToken.value = ''
+  passFlag.value = false
+  tipWords.value = t('captcha.loadFailed')
+}
+
 // 请求背景图片和验证图片
+let captchaRequestId = 0
 const getPictrue = async () => {
+  const requestId = ++captchaRequestId
+  backImgBase.value = ''
+  blockBackImgBase.value = ''
+  backToken.value = ''
+  secretKey.value = ''
+  tipWords.value = ''
   let data = {
     captchaType: captchaType.value
   }
-  const res = await getCodeApi(data)
-  if (res.repCode == '0000') {
-    backImgBase.value = res.repData.originalImageBase64
-    blockBackImgBase.value = res.repData.jigsawImageBase64
-    backToken.value = res.repData.token
-    secretKey.value = res.repData.secretKey
-  } else {
-    tipWords.value = res.repMsg
+  try {
+    const res = await getCodeApi(data)
+    if (requestId !== captchaRequestId) return
+    if (
+      res.repCode === '0000' &&
+      res.repData?.originalImageBase64 &&
+      res.repData?.jigsawImageBase64 &&
+      res.repData?.token
+    ) {
+      backImgBase.value = res.repData.originalImageBase64
+      blockBackImgBase.value = res.repData.jigsawImageBase64
+      backToken.value = res.repData.token
+      secretKey.value = res.repData.secretKey
+    } else {
+      passFlag.value = false
+      const detail = res.repCode !== '0000' ? res.repMsg : ''
+      tipWords.value = [t('captcha.loadFailed'), detail].filter(Boolean).join('：')
+    }
+  } catch (error) {
+    if (requestId !== captchaRequestId) return
+    passFlag.value = false
+    const detail = error instanceof Error ? error.message : ''
+    tipWords.value = [t('captcha.loadFailed'), detail].filter(Boolean).join('：')
   }
 }
 </script>
