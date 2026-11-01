@@ -18,7 +18,9 @@ services:
   redis:
     image: redis:7-alpine
     restart: unless-stopped
-    command: ["redis-server", "--appendonly", "yes"]
+    environment:
+      REDISCLI_AUTH: ${DB_PASSWORD:?missing database password}
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "${DB_PASSWORD:?missing database password}"]
     volumes:
       - redis-data:/data
     healthcheck:
@@ -38,7 +40,7 @@ services:
       SPRING_DATASOURCE_DYNAMIC_DATASOURCE_SLAVE_USERNAME: root
       SPRING_DATASOURCE_DYNAMIC_DATASOURCE_SLAVE_PASSWORD: ${DB_PASSWORD:?missing database password}
       SPRING_REDIS_HOST: redis
-      SPRING_REDIS_PASSWORD: ""
+      SPRING_REDIS_PASSWORD: ${DB_PASSWORD:?missing database password}
       METAXK_CAPTCHA_ENABLE: "true"
     volumes:
       - uploads:/data/uploads
