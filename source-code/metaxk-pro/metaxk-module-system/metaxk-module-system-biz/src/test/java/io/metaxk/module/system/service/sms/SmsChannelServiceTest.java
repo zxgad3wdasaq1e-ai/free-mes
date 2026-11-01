@@ -48,9 +48,14 @@ public class SmsChannelServiceTest extends BaseDbUnitTest {
     @Test
     public void testInitLocalCache_success() {
         // mock 数据
-        SmsChannelDO smsChannelDO01 = randomPojo(SmsChannelDO.class);
+        SmsChannelDO smsChannelDO01 = randomPojo(SmsChannelDO.class,
+                channel -> channel.setStatus(CommonStatusEnum.ENABLE.getStatus()));
         smsChannelMapper.insert(smsChannelDO01);
-        SmsChannelDO smsChannelDO02 = randomPojo(SmsChannelDO.class);
+        SmsChannelDO smsChannelDO02 = randomPojo(SmsChannelDO.class, channel -> {
+            channel.setStatus(CommonStatusEnum.DISABLE.getStatus());
+            channel.setApiKey("");
+            channel.setApiSecret("");
+        });
         smsChannelMapper.insert(smsChannelDO02);
 
         // 调用
@@ -58,7 +63,7 @@ public class SmsChannelServiceTest extends BaseDbUnitTest {
         // 校验调用
         verify(smsClientFactory, times(1)).createOrUpdateSmsClient(
                 argThat(properties -> isPojoEquals(smsChannelDO01, properties)));
-        verify(smsClientFactory, times(1)).createOrUpdateSmsClient(
+        verify(smsClientFactory, never()).createOrUpdateSmsClient(
                 argThat(properties -> isPojoEquals(smsChannelDO02, properties)));
     }
 

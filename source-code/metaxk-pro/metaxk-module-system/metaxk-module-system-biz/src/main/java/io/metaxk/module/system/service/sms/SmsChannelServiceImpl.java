@@ -1,5 +1,6 @@
 package io.metaxk.module.system.service.sms;
 
+import io.metaxk.framework.common.enums.CommonStatusEnum;
 import io.metaxk.framework.common.pojo.PageResult;
 import io.metaxk.framework.sms.core.client.SmsClientFactory;
 import io.metaxk.framework.sms.core.property.SmsChannelProperties;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static io.metaxk.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static io.metaxk.module.system.enums.ErrorCodeConstants.SMS_CHANNEL_HAS_CHILDREN;
@@ -50,7 +52,12 @@ public class SmsChannelServiceImpl implements SmsChannelService {
         log.info("[initLocalCache][缓存短信渠道，数量为:{}]", channels.size());
 
         // 第二步：构建缓存：创建或更新短信 Client
-        List<SmsChannelProperties> propertiesList = SmsChannelConvert.INSTANCE.convertList02(channels);
+        // Disabled channels may intentionally have no credentials. Only initialize
+        // enabled clients; a later refresh initializes them when they are enabled.
+        List<SmsChannelProperties> propertiesList = SmsChannelConvert.INSTANCE.convertList02(
+                channels.stream()
+                        .filter(channel -> CommonStatusEnum.ENABLE.getStatus().equals(channel.getStatus()))
+                        .collect(Collectors.toList()));
         propertiesList.forEach(properties -> smsClientFactory.createOrUpdateSmsClient(properties));
     }
 

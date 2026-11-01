@@ -70,9 +70,29 @@ def encrypt(value, key):
     return result.stdout.decode("ascii")
 
 
+def backend_restarting():
+    """Fail promptly on repeated crashes while allowing time for first startup."""
+    try:
+        result = subprocess.run(
+            ["docker", "compose", "-f", "deploy/compose.yml", "ps", "--all", "--quiet", "backend"],
+            capture_output=True, text=True, check=True,
+        )
+        container = result.stdout.strip()
+        if not container:
+            return False
+        result = subprocess.run(
+            ["docker", "inspect", "--format", "{{.RestartCount}}", container],
+            capture_output=True, text=True, check=True,
+        )
+        return int(result.stdout.strip()) >= 2
+    except (OSError, subprocess.CalledProcessError, ValueError):
+        return False
+
+
 def main():
     base_url = sys.argv[1].rstrip("/")
     deadline = time.monotonic() + 360
+    check_backend_at = time.monotonic() + 30
     last_error = "no response"
     while time.monotonic() < deadline:
         try:
@@ -82,6 +102,10 @@ def main():
             last_error = f"captcha returned {captcha.get('repCode')}: {captcha.get('repMsg')}"
         except (OSError, ValueError, urllib.error.URLError) as error:
             last_error = str(error)
+        if time.monotonic() >= check_backend_at:
+            if backend_restarting():
+                raise AssertionError("Backend restarted repeatedly; inspect container logs")
+            check_backend_at = time.monotonic() + 15
         time.sleep(3)
     else:
         raise AssertionError(f"Captcha did not become ready: {last_error}")
