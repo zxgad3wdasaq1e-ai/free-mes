@@ -128,13 +128,13 @@ public class TaskQueryVo extends PageParam {
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
     private LocalDateTime[] createTime;
 
-    @Schema(description = "任务二维码", example = "https://www.metaxk.io")
+    @Schema(description = "任务二维码", example = "https://example.com")
     private String taskUrl;
 
     @Schema(description = "二维码格式")
     private String barcodeFormat;
 
-    @Schema(description = "工序二维码", example = "https://www.metaxk.io")
+    @Schema(description = "工序二维码", example = "https://example.com")
     private String processUrl;
 
 }

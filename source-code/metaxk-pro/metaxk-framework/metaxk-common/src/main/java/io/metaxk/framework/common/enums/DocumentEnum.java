@@ -14,8 +14,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum DocumentEnum {
 
-    REDIS_INSTALL("https://www.metaxk.io", "Redis 安装文档"),
-    TENANT("https://doc.metaxk.io", "SaaS 多租户文档");
+    REDIS_INSTALL("https://redis.io/docs/latest/", "Redis 安装文档"),
+    TENANT("", "SaaS 多租户文档");
 
     private final String url;
     private final String memo;

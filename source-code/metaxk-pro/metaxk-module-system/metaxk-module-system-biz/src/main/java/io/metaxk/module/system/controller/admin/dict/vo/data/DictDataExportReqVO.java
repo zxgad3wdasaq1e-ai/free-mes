@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 @Data
 public class DictDataExportReqVO {
 
-    @Schema(description = "字典标签", example = "万界星空科技")
+    @Schema(description = "字典标签", example = "MES")
     @Size(max = 100, message = "字典标签长度不能超过100个字符")
     private String label;
 

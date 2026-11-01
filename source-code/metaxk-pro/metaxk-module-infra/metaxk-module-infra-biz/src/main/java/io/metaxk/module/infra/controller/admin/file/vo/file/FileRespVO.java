@@ -21,7 +21,7 @@ public class FileRespVO {
     @Schema(description = "原文件名", required = true, example = "metaxk.jpg")
     private String name;
 
-    @Schema(description = "文件 URL", required = true, example = "https://www.metaxk.io/metaxk.jpg")
+    @Schema(description = "文件 URL", required = true, example = "https://example.com/metaxk.jpg")
     private String url;
 
     @Schema(description = "文件MIME类型", example = "application/octet-stream")

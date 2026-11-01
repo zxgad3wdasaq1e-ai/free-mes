@@ -64,11 +64,11 @@ const userStore = useUserStore()
 
 const sendValue = ref('')
 
-const server = ref(
-  (import.meta.env.VITE_BASE_URL + '/websocket/message').replace('http', 'ws') +
-    '?userId=' +
-    userStore.getUser.id
-)
+const socketUrl = new URL(import.meta.env.VITE_BASE_URL || '/', window.location.origin)
+socketUrl.protocol = socketUrl.protocol === 'https:' ? 'wss:' : 'ws:'
+socketUrl.pathname = `${socketUrl.pathname.replace(/\/+$/, '')}/websocket/message`
+socketUrl.searchParams.set('userId', String(userStore.getUser.id))
+const server = ref(socketUrl.toString())
 
 const state = reactive({
   recordList: [] as { id: number; time: number; res: string }[]

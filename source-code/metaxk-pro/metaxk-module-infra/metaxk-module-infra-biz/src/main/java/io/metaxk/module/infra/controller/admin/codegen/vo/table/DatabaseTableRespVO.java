@@ -10,7 +10,7 @@ public class DatabaseTableRespVO {
     @Schema(description = "表名称", required = true, example = "yuanma")
     private String name;
 
-    @Schema(description = "表描述", required = true, example = "万界星空科技")
+    @Schema(description = "表描述", required = true, example = "MES")
     private String comment;
 
 }

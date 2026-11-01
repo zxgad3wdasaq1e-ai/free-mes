@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 @Data
 public class MenuBaseVO {
 
-    @Schema(description = "菜单名称", required = true, example = "万界星空科技")
+    @Schema(description = "菜单名称", required = true, example = "MES")
     @NotBlank(message = "菜单名称不能为空")
     @Size(max = 50, message = "菜单名称长度不能超过50个字符")
     private String name;

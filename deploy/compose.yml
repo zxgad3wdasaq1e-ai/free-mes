@@ -1,0 +1,59 @@
+services:
+  db:
+    image: ghcr.io/zxgad3wdasaq1e-ai/free-mes-db:v1.0.0
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD:?missing database password}
+      MARIADB_DATABASE: mes
+      TZ: Asia/Shanghai
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_general_ci", "--sql-mode=IGNORE_SPACE,NO_ENGINE_SUBSTITUTION", "--lower-case-table-names=1"]
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 60s
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  backend:
+    image: ghcr.io/zxgad3wdasaq1e-ai/free-mes-backend:v1.0.0
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+      SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_URL: jdbc:mysql://db:3306/mes?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+      SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_USERNAME: root
+      SPRING_DATASOURCE_DYNAMIC_DATASOURCE_MASTER_PASSWORD: ${DB_PASSWORD:?missing database password}
+      SPRING_DATASOURCE_DYNAMIC_DATASOURCE_SLAVE_URL: jdbc:mysql://db:3306/mes?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&nullCatalogMeansCurrent=true
+      SPRING_DATASOURCE_DYNAMIC_DATASOURCE_SLAVE_USERNAME: root
+      SPRING_DATASOURCE_DYNAMIC_DATASOURCE_SLAVE_PASSWORD: ${DB_PASSWORD:?missing database password}
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PASSWORD: ""
+    volumes:
+      - uploads:/data/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+  frontend:
+    image: ghcr.io/zxgad3wdasaq1e-ai/free-mes-frontend:v1.0.0
+    restart: unless-stopped
+    ports:
+      - "${MES_PORT:-8080}:80"
+    depends_on:
+      - backend
+volumes:
+  db-data:
+  redis-data:
+  uploads:

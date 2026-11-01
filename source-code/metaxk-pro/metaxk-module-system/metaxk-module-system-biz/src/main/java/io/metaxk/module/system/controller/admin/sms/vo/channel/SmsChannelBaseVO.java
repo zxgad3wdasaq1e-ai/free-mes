@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class SmsChannelBaseVO {
 
-    @Schema(description = "短信签名", required = true, example = "万界星空科技")
+    @Schema(description = "短信签名", required = true, example = "MES")
     @NotNull(message = "短信签名不能为空")
     private String signature;
 
@@ -30,7 +30,7 @@ public class SmsChannelBaseVO {
     @Schema(description = "短信 API 的密钥", example = "yuanma")
     private String apiSecret;
 
-    @Schema(description = "短信发送回调 URL", example = "http://www.metaxk.io")
+    @Schema(description = "短信发送回调 URL", example = "https://example.com")
     @URL(message = "回调 URL 格式不正确")
     private String callbackUrl;
 

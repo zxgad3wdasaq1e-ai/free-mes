@@ -11,11 +11,11 @@ import javax.validation.constraints.*;
 @Data
 public class BpmUserGroupBaseVO {
 
-    @Schema(description = "组名", required = true, example = "万界星空科技")
+    @Schema(description = "组名", required = true, example = "MES")
     @NotNull(message = "组名不能为空")
     private String name;
 
-    @Schema(description = "描述", required = true, example = "万界星空科技")
+    @Schema(description = "描述", required = true, example = "MES")
     @NotNull(message = "描述不能为空")
     private String description;
 

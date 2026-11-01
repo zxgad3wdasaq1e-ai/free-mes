@@ -27,7 +27,7 @@ public class DesensitizeTest extends BaseMockitoUnitTest {
     public void test() {
         // 准备参数
         DesensitizeDemo desensitizeDemo = new DesensitizeDemo();
-        desensitizeDemo.setNickname("万界星空科技");
+        desensitizeDemo.setNickname("MES");
         desensitizeDemo.setBankCard("9988002866797031");
         desensitizeDemo.setCarLicense("粤A66666");
         desensitizeDemo.setFixedPhone("01086551122");
@@ -38,9 +38,9 @@ public class DesensitizeTest extends BaseMockitoUnitTest {
         desensitizeDemo.setSlider2("ABCDEFG");
         desensitizeDemo.setSlider3("ABCDEFG");
         desensitizeDemo.setEmail("1@email.com");
-        desensitizeDemo.setRegex("你好，我是万界星空科技");
+        desensitizeDemo.setRegex("你好，我是MES");
         desensitizeDemo.setAddress("北京市海淀区上地十街10号");
-        desensitizeDemo.setOrigin("万界星空科技");
+        desensitizeDemo.setOrigin("MES");
 
         // 调用
         DesensitizeDemo d = JsonUtils.parseObject(JsonUtils.toJsonString(desensitizeDemo), DesensitizeDemo.class);
@@ -59,7 +59,7 @@ public class DesensitizeTest extends BaseMockitoUnitTest {
         assertEquals("1****@email.com", d.getEmail());
         assertEquals("你好，我是*", d.getRegex());
         assertEquals("北京市海淀区上地十街10号*", d.getAddress());
-        assertEquals("万界星空科技", d.getOrigin());
+        assertEquals("MES", d.getOrigin());
     }
 
     @Data
@@ -87,7 +87,7 @@ public class DesensitizeTest extends BaseMockitoUnitTest {
         private String slider3;
         @EmailDesensitize
         private String email;
-        @RegexDesensitize(regex = "万界星空科技", replacer = "*")
+        @RegexDesensitize(regex = "MES", replacer = "*")
         private String regex;
         @Address
         private String address;

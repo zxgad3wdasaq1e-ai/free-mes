@@ -30,7 +30,7 @@ public class OAuth2OpenAuthorizeInfoRespVO {
         @Schema(description = "应用名", required = true, example = "土豆")
         private String name;
 
-        @Schema(description = "应用图标", required = true, example = "https://www.metaxk.io/xx.png")
+        @Schema(description = "应用图标", required = true, example = "https://example.com/xx.png")
         private String logo;
 
     }

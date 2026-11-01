@@ -15,7 +15,7 @@ public class OperateLogExportReqVO {
     @Schema(description = "操作模块,模拟匹配", example = "订单")
     private String module;
 
-    @Schema(description = "用户昵称,模拟匹配", example = "万界星空科技")
+    @Schema(description = "用户昵称,模拟匹配", example = "MES")
     private String userNickname;
 
     @Schema(description = "操作分类,参见 OperateLogTypeEnum 枚举类", example = "1")

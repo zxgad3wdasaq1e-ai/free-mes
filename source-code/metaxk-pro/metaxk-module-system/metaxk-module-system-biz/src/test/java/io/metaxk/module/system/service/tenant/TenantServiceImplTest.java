@@ -148,18 +148,18 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
         when(userService.createUser(argThat(user -> {
             assertEquals("metaxk", user.getUsername());
             assertEquals("yuanma", user.getPassword());
-            assertEquals("万界星空科技", user.getNickname());
+            assertEquals("MES", user.getNickname());
             assertEquals("15601691300", user.getMobile());
             return true;
         }))).thenReturn(300L);
 
         // 准备参数
         TenantCreateReqVO reqVO = randomPojo(TenantCreateReqVO.class, o -> {
-            o.setContactName("万界星空科技");
+            o.setContactName("MES");
             o.setContactMobile("15601691300");
             o.setPackageId(100L);
             o.setStatus(randomCommonStatus());
-            o.setDomain("https://www.metaxk.io");
+            o.setDomain("https://example.com");
             o.setUsername("metaxk");
             o.setPassword("yuanma");
         });
@@ -290,7 +290,7 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
     public void testGetTenantPage() {
         // mock 数据
         TenantDO dbTenant = randomPojo(TenantDO.class, o -> { // 等会查询到
-            o.setName("万界星空科技");
+            o.setName("MES");
             o.setContactName("星空斗士");
             o.setContactMobile("15601691300");
             o.setStatus(CommonStatusEnum.ENABLE.getStatus());
@@ -309,7 +309,7 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
         tenantMapper.insert(cloneIgnoreId(dbTenant, o -> o.setCreateTime(buildTime(2021, 12, 12))));
         // 准备参数
         TenantPageReqVO reqVO = new TenantPageReqVO();
-        reqVO.setName("万界星空科技");
+        reqVO.setName("MES");
         reqVO.setContactName("斗士");
         reqVO.setContactMobile("1560");
         reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
@@ -327,7 +327,7 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
     public void testGetTenantList() {
         // mock 数据
         TenantDO dbTenant = randomPojo(TenantDO.class, o -> { // 等会查询到
-            o.setName("万界星空科技");
+            o.setName("MES");
             o.setContactName("星空斗士");
             o.setContactMobile("15601691300");
             o.setStatus(CommonStatusEnum.ENABLE.getStatus());
@@ -346,7 +346,7 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
         tenantMapper.insert(cloneIgnoreId(dbTenant, o -> o.setCreateTime(buildTime(2021, 12, 12))));
         // 准备参数
         TenantExportReqVO reqVO = new TenantExportReqVO();
-        reqVO.setName("万界星空科技");
+        reqVO.setName("MES");
         reqVO.setContactName("斗士");
         reqVO.setContactMobile("1560");
         reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
@@ -362,11 +362,11 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
     @Test
     public void testGetTenantByName() {
         // mock 数据
-        TenantDO dbTenant = randomPojo(TenantDO.class, o -> o.setName("万界星空科技"));
+        TenantDO dbTenant = randomPojo(TenantDO.class, o -> o.setName("MES"));
         tenantMapper.insert(dbTenant);// @Sql: 先插入出一条存在的数据
 
         // 调用
-        TenantDO result = tenantService.getTenantByName("万界星空科技");
+        TenantDO result = tenantService.getTenantByName("MES");
         // 校验存在
         assertPojoEquals(result, dbTenant);
     }

@@ -9,7 +9,6 @@
       >
         <!-- 左上角的 logo + 系统标题 -->
         <div class="flex items-center relative text-white">
-          <img src="@/assets/imgs/logo.png" alt="" class="w-48px h-48px mr-10px" />
           <span class="text-20px font-bold">{{ underlineToHump(appStore.getTitle) }}</span>
         </div>
         <!-- 左边的背景图 + 欢迎语 -->
@@ -28,7 +27,6 @@
                 {{ t('login.message') }}
               </div> -->
             </div>
-            <img src="@/assets/imgs/logo-bg.png" key="1" alt="" class="w-350px" />
           </TransitionGroup>
         </div>
       </div>
@@ -36,7 +34,6 @@
         <!-- 右上角的主题、语言选择 -->
         <div class="flex justify-between items-center text-white @2xl:justify-end @xl:justify-end">
           <div class="flex items-center @2xl:hidden @xl:hidden">
-            <img src="@/assets/imgs/logo.png" alt="" class="w-48px h-48px mr-10px" />
             <span class="text-20px font-bold">{{ underlineToHump(appStore.getTitle) }}</span>
           </div>
           <div class="flex justify-end items-center space-x-10px">

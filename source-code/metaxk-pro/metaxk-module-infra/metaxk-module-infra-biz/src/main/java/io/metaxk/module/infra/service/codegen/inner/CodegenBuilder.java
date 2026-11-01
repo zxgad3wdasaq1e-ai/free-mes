@@ -195,7 +195,7 @@ public class CodegenBuilder {
         }
         // url
         if (StrUtil.endWithIgnoreCase(column.getColumnName(), "url")) {
-            column.setExample("https://www.metaxk.io");
+            column.setExample("https://example.com");
             return;
         }
         // reason

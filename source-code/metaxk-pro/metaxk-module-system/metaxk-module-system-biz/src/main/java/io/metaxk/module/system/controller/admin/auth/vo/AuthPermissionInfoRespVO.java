@@ -34,10 +34,10 @@ public class AuthPermissionInfoRespVO {
         @Schema(description = "用户编号", required = true, example = "1024")
         private Long id;
 
-        @Schema(description = "用户昵称", required = true, example = "万界星空科技")
+        @Schema(description = "用户昵称", required = true, example = "MES")
         private String nickname;
 
-        @Schema(description = "用户头像", required = true, example = "http://www.metaxk.io/xx.jpg")
+        @Schema(description = "用户头像", required = true, example = "https://example.com/xx.jpg")
         private String avatar;
 
     }

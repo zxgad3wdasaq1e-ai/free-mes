@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 @Data
 public class BpmFormBaseVO {
 
-    @Schema(description = "表单名称", required = true, example = "万界星空科技")
+    @Schema(description = "表单名称", required = true, example = "MES")
     @NotNull(message = "表单名称不能为空")
     private String name;
 

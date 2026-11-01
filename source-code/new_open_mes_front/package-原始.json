@@ -2,7 +2,6 @@
   "name": "ui-admin-vue3",
   "version": "1.7.1-snapshot.1941",
   "description": "基于vue3、vite4、element-plus、typesScript",
-  "author": "万界星空科技www.metaxk.vip",
   "private": false,
   "scripts": {
     "i": "pnpm install",
@@ -140,13 +139,5 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/metaxk/cloudmes"
-  },
-  "bugs": {
-    "url": "https://github.com/metaxk/cloudmes/issues"
-  },
-  "homepage": "https://github.com/metaxk/cloudmes"
+  "license": "MIT"
 }

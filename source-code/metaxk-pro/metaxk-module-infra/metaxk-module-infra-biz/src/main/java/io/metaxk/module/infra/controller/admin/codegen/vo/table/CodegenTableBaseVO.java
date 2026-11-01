@@ -19,7 +19,7 @@ public class CodegenTableBaseVO {
     @NotNull(message = "表名称不能为空")
     private String tableName;
 
-    @Schema(description = "表描述", required = true, example = "万界星空科技")
+    @Schema(description = "表描述", required = true, example = "MES")
     @NotNull(message = "表描述不能为空")
     private String tableComment;
 
@@ -42,7 +42,7 @@ public class CodegenTableBaseVO {
     @NotNull(message = "类描述不能为空")
     private String classComment;
 
-    @Schema(description = "作者", required = true, example = "万界星空科技")
+    @Schema(description = "作者", required = true, example = "MES")
     @NotNull(message = "作者不能为空")
     private String author;
 

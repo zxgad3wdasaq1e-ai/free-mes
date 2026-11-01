@@ -16,7 +16,7 @@ public class MenuSimpleRespVO {
     @Schema(description = "菜单编号", required = true, example = "1024")
     private Long id;
 
-    @Schema(description = "菜单名称", required = true, example = "万界星空科技")
+    @Schema(description = "菜单名称", required = true, example = "MES")
     private String name;
 
     @Schema(description = "父菜单 ID", required = true, example = "1024")

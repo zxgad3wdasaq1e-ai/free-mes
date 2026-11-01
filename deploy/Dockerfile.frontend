@@ -1,0 +1,14 @@
+FROM node:18-bookworm-slim AS build
+WORKDIR /app
+RUN corepack enable && corepack prepare pnpm@7.33.6 --activate
+COPY source-code/new_open_mes_front/package.json ./
+COPY ["source-code/new_open_mes_front/pnpm-lock-原始.yaml", "./pnpm-lock.yaml"]
+RUN pnpm install --frozen-lockfile
+COPY source-code/new_open_mes_front/ ./
+ENV VITE_BASE_URL="" VITE_UPLOAD_URL="/admin-api/infra/file/upload"
+RUN pnpm build:prod
+
+FROM nginx:1.27-alpine
+COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80

@@ -5,7 +5,7 @@
     </el-col>
     <el-col :span="24" style="padding-left: 10px; padding-right: 10px">
       <el-card shadow="hover" class="mb-10px text-center">
-        <Qrcode :logo="logoImg" />
+        <Qrcode />
       </el-card>
     </el-col>
     <el-divider class="enter-x">{{ t('login.qrcode') }}</el-divider>
@@ -17,8 +17,6 @@
   </el-row>
 </template>
 <script setup lang="ts">
-import logoImg from '@/assets/imgs/logo.png'
-
 import LoginFormTitle from './LoginFormTitle.vue'
 import { useLoginState, LoginStateEnum } from './useLogin'
 

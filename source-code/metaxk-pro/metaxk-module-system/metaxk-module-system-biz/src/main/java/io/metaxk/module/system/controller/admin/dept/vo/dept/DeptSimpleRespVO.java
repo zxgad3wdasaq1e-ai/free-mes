@@ -14,10 +14,10 @@ public class DeptSimpleRespVO {
     @Schema(description = "部门ID", required = true, example = "1024")
     private Long id;
 
-    @Schema(description = "部门编号", required = true, example = "万界星空科技")
+    @Schema(description = "部门编号", required = true, example = "MES")
     private String number;
 
-    @Schema(description = "部门名称", required = true, example = "万界星空科技")
+    @Schema(description = "部门名称", required = true, example = "MES")
     private String name;
 
     @Schema(description = "父部门 ID", required = true, example = "1024")

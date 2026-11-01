@@ -166,9 +166,9 @@ public class UserController {
     public void importTemplate(HttpServletResponse response) throws IOException {
         // 手动创建导出 demo
         List<UserImportExcelVO> list = Arrays.asList(
-                UserImportExcelVO.builder().username("metaxk").deptId(1L).email("metaxk@metaxk.io").mobile("13888888888")
-                        .nickname("万界星空科技").status(CommonStatusEnum.ENABLE.getStatus()).sex(SexEnum.MALE.getSex()).build(),
-                UserImportExcelVO.builder().username("yuanma").deptId(2L).email("yuanma@metaxk.io").mobile("13888888888")
+                UserImportExcelVO.builder().username("metaxk").deptId(1L).email("user@example.com").mobile("13888888888")
+                        .nickname("MES").status(CommonStatusEnum.ENABLE.getStatus()).sex(SexEnum.MALE.getSex()).build(),
+                UserImportExcelVO.builder().username("yuanma").deptId(2L).email("user@example.com").mobile("13888888888")
                         .nickname("源码").status(CommonStatusEnum.DISABLE.getStatus()).sex(SexEnum.FEMALE.getSex()).build()
         );
 

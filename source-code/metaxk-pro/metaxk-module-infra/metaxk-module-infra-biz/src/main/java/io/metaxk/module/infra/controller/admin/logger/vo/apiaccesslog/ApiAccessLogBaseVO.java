@@ -68,7 +68,7 @@ public class ApiAccessLogBaseVO {
     @NotNull(message = "结果码不能为空")
     private Integer resultCode;
 
-    @Schema(description = "结果提示", example = "万界星空科技，牛逼！")
+    @Schema(description = "结果提示", example = "MES，牛逼！")
     private String resultMsg;
 
 }

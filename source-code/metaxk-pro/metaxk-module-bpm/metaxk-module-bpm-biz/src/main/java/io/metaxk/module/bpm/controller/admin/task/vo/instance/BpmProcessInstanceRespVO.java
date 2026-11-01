@@ -14,7 +14,7 @@ public class BpmProcessInstanceRespVO {
     @Schema(description = "流程实例的编号", required = true, example = "1024")
     private String id;
 
-    @Schema(description = "流程名称", required = true, example = "万界星空科技")
+    @Schema(description = "流程名称", required = true, example = "MES")
     private String name;
 
     @Schema(description = "流程分类-参见 bpm_model_category 数据字典", required = true, example = "1")

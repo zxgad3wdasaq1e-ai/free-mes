@@ -179,9 +179,7 @@ service.interceptors.response.use(
           t('sys.api.errMsg901') +
           '</div>' +
           '<div> &nbsp; </div>' +
-          '<div>参考 https://www.metaxk.io/ 教程</div>' +
-          '<div> &nbsp; </div>' +
-          '<div>5 分钟搭建MES本地环境</div>'
+          '<div>请检查系统配置。</div>'
       })
       return Promise.reject(new Error(msg))
     } else if (code !== 200) {

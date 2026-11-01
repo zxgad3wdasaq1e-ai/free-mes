@@ -26,7 +26,7 @@ public class BpmOALeaveBaseVO {
     @Schema(description = "请假类型-参见 bpm_oa_type 枚举", required = true, example = "1")
     private Integer type;
 
-    @Schema(description = "原因", required = true, example = "阅读万界星空科技")
+    @Schema(description = "原因", required = true, example = "阅读MES")
     private String reason;
 
 }

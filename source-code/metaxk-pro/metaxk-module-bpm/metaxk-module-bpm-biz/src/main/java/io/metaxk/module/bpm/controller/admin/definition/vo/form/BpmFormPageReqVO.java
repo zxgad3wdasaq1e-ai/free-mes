@@ -12,7 +12,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class BpmFormPageReqVO extends PageParam {
 
-    @Schema(description = "表单名称", example = "万界星空科技")
+    @Schema(description = "表单名称", example = "MES")
     private String name;
 
 }

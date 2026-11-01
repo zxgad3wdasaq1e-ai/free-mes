@@ -17,7 +17,7 @@ import static io.metaxk.framework.common.util.date.DateUtils.FORMAT_YEAR_MONTH_D
 @ToString(callSuper = true)
 public class BpmProcessInstanceMyPageReqVO extends PageParam {
 
-    @Schema(description = "流程名称", example = "万界星空科技")
+    @Schema(description = "流程名称", example = "MES")
     private String name;
 
     @Schema(description = "流程定义的编号", example = "2048")

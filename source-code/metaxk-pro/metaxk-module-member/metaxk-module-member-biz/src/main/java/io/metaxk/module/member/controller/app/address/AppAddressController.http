@@ -9,7 +9,7 @@ Authorization: Bearer {{appToken}}
   "mobile": "13888888888",
   "areaId": "610632",
   "postCode": "200000",
-  "detailAddress": "万界星空科技888室",
+  "detailAddress": "MES888室",
   "defaulted": true
 }
 
@@ -25,7 +25,7 @@ Authorization: Bearer {{appToken}}
   "mobile": "15601691300",
   "areaId": "610632",
   "postCode": "200000",
-  "detailAddress": "万界星空科技 233 号 666 室",
+  "detailAddress": "MES 233 号 666 室",
   "defaulted": false
 }
 

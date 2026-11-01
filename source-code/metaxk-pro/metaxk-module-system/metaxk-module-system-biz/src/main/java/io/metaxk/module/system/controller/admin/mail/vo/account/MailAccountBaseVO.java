@@ -26,7 +26,7 @@ public class MailAccountBaseVO {
     @NotNull(message = "密码必填")
     private String password;
 
-    @Schema(description = "SMTP 服务器域名", required = true, example = "www.metaxk.io")
+    @Schema(description = "SMTP 服务器域名", required = true, example = "example.com")
     @NotNull(message = "SMTP 服务器域名不能为空")
     private String host;
 

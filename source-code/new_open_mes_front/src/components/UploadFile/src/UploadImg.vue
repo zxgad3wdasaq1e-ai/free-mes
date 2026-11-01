@@ -72,7 +72,9 @@ type FileTypes =
 // 接受父组件参数
 const props = defineProps({
   modelValue: propTypes.string.def(''),
-  updateUrl: propTypes.string.def(import.meta.env.VITE_API_BASEPATH + '/common/uploadMinio'),
+  updateUrl: propTypes.string.def(
+    import.meta.env.VITE_BASE_URL.replace(/\/$/, '') + '/admin-api/infra/file/upload'
+  ),
   drag: propTypes.bool.def(true), // 是否支持拖拽上传 ==> 非必传（默认为 true）
   disabled: propTypes.bool.def(false), // 是否禁用上传组件 ==> 非必传（默认为 false）
   fileSize: propTypes.number.def(5), // 图片大小限制 ==> 非必传（默认为 5M）

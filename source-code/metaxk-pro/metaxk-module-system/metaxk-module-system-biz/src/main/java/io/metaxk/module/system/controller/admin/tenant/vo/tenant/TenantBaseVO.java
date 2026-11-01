@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 public class TenantBaseVO {
 
-    @Schema(description = "租户名", required = true, example = "万界星空科技")
+    @Schema(description = "租户名", required = true, example = "MES")
     @NotNull(message = "租户名不能为空")
     private String name;
 
@@ -28,7 +28,7 @@ public class TenantBaseVO {
     @NotNull(message = "租户状态")
     private Integer status;
 
-    @Schema(description = "绑定域名", example = "https://www.metaxk.io")
+    @Schema(description = "绑定域名", example = "https://example.com")
     private String domain;
 
     @Schema(description = "租户套餐编号", required = true, example = "1024")

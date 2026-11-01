@@ -1,7 +1,6 @@
 
 ## 🐶 新手必读
 
-* 演示地址：<https://www.metaxk.vip>
 
 
 * 管理后台的 Vue3 版本采用 [vue-element-plus-admin] 

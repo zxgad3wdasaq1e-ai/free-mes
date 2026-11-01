@@ -2,9 +2,7 @@ package io.metaxk.framework.swagger.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.media.IntegerSchema;
 import io.swagger.v3.oas.models.media.StringSchema;
 import io.swagger.v3.oas.models.parameters.Parameter;
@@ -66,9 +64,7 @@ public class MetaxkSwaggerAutoConfiguration {
         return new Info()
                 .title(properties.getTitle())
                 .description(properties.getDescription())
-                .version(properties.getVersion())
-                .contact(new Contact().name(properties.getAuthor()).url(properties.getUrl()).email(properties.getEmail()))
-                .license(new License().name(properties.getLicense()).url(properties.getLicenseUrl()));
+                .version(properties.getVersion());
     }
 
     /**

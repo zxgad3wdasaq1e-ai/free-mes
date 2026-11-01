@@ -7,10 +7,10 @@ import lombok.Data;
 @Data
 public class DeptListReqVO {
 
-    @Schema(description = "部门编号,模糊匹配", example = "万界星空科技")
+    @Schema(description = "部门编号,模糊匹配", example = "MES")
     private String number;
 
-    @Schema(description = "部门名称,模糊匹配", example = "万界星空科技")
+    @Schema(description = "部门名称,模糊匹配", example = "MES")
     private String name;
 
     @Schema(description = "展示状态,参见 CommonStatusEnum 枚举类", example = "1")

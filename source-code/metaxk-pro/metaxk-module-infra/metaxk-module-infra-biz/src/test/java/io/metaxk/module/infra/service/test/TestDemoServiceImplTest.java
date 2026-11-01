@@ -108,7 +108,7 @@ public class TestDemoServiceImplTest extends BaseDbUnitTest {
     public void testGetTestDemoPage() {
         // mock 数据
         TestDemoDO dbTestDemo = randomPojo(TestDemoDO.class, o -> { // 等会查询到
-            o.setName("万界星空科技");
+            o.setName("MES");
             o.setStatus(CommonStatusEnum.ENABLE.getStatus());
             o.setType(1);
             o.setCategory(2);
@@ -130,7 +130,7 @@ public class TestDemoServiceImplTest extends BaseDbUnitTest {
         testDemoMapper.insert(cloneIgnoreId(dbTestDemo, o -> o.setCreateTime(buildTime(2021, 12, 12))));
         // 准备参数
         TestDemoPageReqVO reqVO = new TestDemoPageReqVO();
-        reqVO.setName("万界星空科技");
+        reqVO.setName("MES");
         reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
         reqVO.setType(1);
         reqVO.setCategory(2);
@@ -149,7 +149,7 @@ public class TestDemoServiceImplTest extends BaseDbUnitTest {
     public void testGetTestDemoList() {
         // mock 数据
         TestDemoDO dbTestDemo = randomPojo(TestDemoDO.class, o -> { // 等会查询到
-            o.setName("万界星空科技");
+            o.setName("MES");
             o.setStatus(CommonStatusEnum.ENABLE.getStatus());
             o.setType(1);
             o.setCategory(2);
@@ -171,7 +171,7 @@ public class TestDemoServiceImplTest extends BaseDbUnitTest {
         testDemoMapper.insert(cloneIgnoreId(dbTestDemo, o -> o.setCreateTime(buildTime(2021, 12, 12))));
         // 准备参数
         TestDemoExportReqVO reqVO = new TestDemoExportReqVO();
-        reqVO.setName("万界星空科技");
+        reqVO.setName("MES");
         reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
         reqVO.setType(1);
         reqVO.setCategory(2);

@@ -31,7 +31,7 @@ public class ProjectReactor {
     private static final String GROUP_ID = "io.metaxk.boot";
     private static final String ARTIFACT_ID = "metaxk";
     private static final String PACKAGE_NAME = "io.metaxk";
-    private static final String TITLE = "万界星空科技管理系统";
+    private static final String TITLE = "MES管理系统";
 
     /**
      * 白名单文件，不进行重写，避免出问题

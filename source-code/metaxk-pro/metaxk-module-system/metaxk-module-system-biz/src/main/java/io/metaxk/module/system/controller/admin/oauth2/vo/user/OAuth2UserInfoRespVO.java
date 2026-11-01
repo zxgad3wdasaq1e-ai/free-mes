@@ -19,10 +19,10 @@ public class OAuth2UserInfoRespVO {
     @Schema(description = "用户账号", required = true, example = "星空斗士")
     private String username;
 
-    @Schema(description = "用户昵称", required = true, example = "万界星空科技")
+    @Schema(description = "用户昵称", required = true, example = "MES")
     private String nickname;
 
-    @Schema(description = "用户邮箱", example = "metaxk@metaxk.io")
+    @Schema(description = "用户邮箱", example = "user@example.com")
     private String email;
     @Schema(description = "手机号码", example = "15601691300")
     private String mobile;
@@ -30,7 +30,7 @@ public class OAuth2UserInfoRespVO {
     @Schema(description = "用户性别,参见 SexEnum 枚举类", example = "1")
     private Integer sex;
 
-    @Schema(description = "用户头像", example = "https://www.metaxk.io/xxx.png")
+    @Schema(description = "用户头像", example = "https://example.com/xxx.png")
     private String avatar;
 
     /**

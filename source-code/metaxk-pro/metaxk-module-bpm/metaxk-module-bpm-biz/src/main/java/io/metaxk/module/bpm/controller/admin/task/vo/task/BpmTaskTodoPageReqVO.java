@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 public class BpmTaskTodoPageReqVO extends PageParam {
 
-    @Schema(description = "流程任务名", example = "万界星空科技")
+    @Schema(description = "流程任务名", example = "MES")
     private String name;
 
     @Schema(description = "创建时间")

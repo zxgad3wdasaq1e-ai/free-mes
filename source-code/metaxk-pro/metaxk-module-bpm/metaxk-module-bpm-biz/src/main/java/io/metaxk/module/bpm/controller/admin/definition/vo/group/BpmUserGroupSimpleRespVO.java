@@ -14,7 +14,7 @@ public class BpmUserGroupSimpleRespVO {
     @Schema(description = "用户组编号", required = true, example = "1024")
     private Long id;
 
-    @Schema(description = "用户组名字", required = true, example = "万界星空科技")
+    @Schema(description = "用户组名字", required = true, example = "MES")
     private String name;
 
 }

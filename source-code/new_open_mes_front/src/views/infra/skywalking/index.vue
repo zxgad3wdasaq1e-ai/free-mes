@@ -1,8 +1,9 @@
 <template>
   <ContentWrap>
-    <IFrame :src="src" />
+    <IFrame v-if="src" :src="src" />
+    <p v-else>请配置监控服务地址。</p>
   </ContentWrap>
 </template>
 <script setup lang="ts" name="Skywalking">
-const src = ref('http://skywalking.metaxk.io')
+const src = ref(import.meta.env.VITE_SKYWALKING_URL || '')
 </script>

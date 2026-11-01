@@ -65,14 +65,10 @@ watch(
       ]"
       to="/"
     >
-      <img
-        src="@/assets/imgs/logo.png"
-        class="w-[calc(var(--logo-height)-10px)] h-[calc(var(--logo-height)-10px)]"
-      />
       <div
         v-if="show"
         :class="[
-          'ml-10px text-16px font-700',
+          'text-16px font-700',
           {
             'text-[var(--logo-title-text-color)]': layout === 'classic',
             'text-[var(--top-header-text-color)]':

@@ -13,7 +13,7 @@ public class BpmModelUpdateReqVO {
     @NotEmpty(message = "编号不能为空")
     private String id;
 
-    @Schema(description = "流程名称", example = "万界星空科技")
+    @Schema(description = "流程名称", example = "MES")
     private String name;
 
     @Schema(description = "流程描述", example = "我是描述")

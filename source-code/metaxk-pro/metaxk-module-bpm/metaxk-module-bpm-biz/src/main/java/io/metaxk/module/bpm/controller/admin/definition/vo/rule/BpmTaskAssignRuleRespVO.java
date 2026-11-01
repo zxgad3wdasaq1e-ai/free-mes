@@ -22,7 +22,7 @@ public class BpmTaskAssignRuleRespVO extends BpmTaskAssignRuleBaseVO {
 
     @Schema(description = "流程任务定义的编号", required = true, example = "2048")
     private String taskDefinitionKey;
-    @Schema(description = "流程任务定义的名字", required = true, example = "关注万界星空科技")
+    @Schema(description = "流程任务定义的名字", required = true, example = "关注MES")
     private String taskDefinitionName;
 
 }

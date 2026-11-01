@@ -12,7 +12,7 @@ public class BpmTaskTodoPageItemRespVO {
     @Schema(description = "任务编号", required = true, example = "1024")
     private String id;
 
-    @Schema(description = "任务名字", required = true, example = "万界星空科技")
+    @Schema(description = "任务名字", required = true, example = "MES")
     private String name;
 
     @Schema(description = "接收时间", required = true)
@@ -36,7 +36,7 @@ public class BpmTaskTodoPageItemRespVO {
         @Schema(description = "流程实例编号", required = true, example = "1024")
         private String id;
 
-        @Schema(description = "流程实例名称", required = true, example = "万界星空科技")
+        @Schema(description = "流程实例名称", required = true, example = "MES")
         private String name;
 
         @Schema(description = "发起人的用户编号", required = true, example = "1024")

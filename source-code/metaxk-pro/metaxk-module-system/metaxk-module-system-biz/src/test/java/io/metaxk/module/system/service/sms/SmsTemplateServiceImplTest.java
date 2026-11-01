@@ -196,7 +196,7 @@ public class SmsTemplateServiceImplTest extends BaseDbUnitTest {
            o.setType(SmsTemplateTypeEnum.PROMOTION.getType());
            o.setStatus(CommonStatusEnum.ENABLE.getStatus());
            o.setCode("tudou");
-           o.setContent("万界星空科技");
+           o.setContent("MES");
            o.setApiTemplateId("metaxk");
            o.setChannelId(1L);
            o.setCreateTime(buildTime(2021, 11, 11));
@@ -221,7 +221,7 @@ public class SmsTemplateServiceImplTest extends BaseDbUnitTest {
        reqVO.setType(SmsTemplateTypeEnum.PROMOTION.getType());
        reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
        reqVO.setCode("tu");
-       reqVO.setContent("万界星空科技");
+       reqVO.setContent("MES");
        reqVO.setApiTemplateId("metaxk");
        reqVO.setChannelId(1L);
        reqVO.setCreateTime(buildBetweenTime(2021, 11, 1, 2021, 12, 1));
@@ -241,7 +241,7 @@ public class SmsTemplateServiceImplTest extends BaseDbUnitTest {
             o.setType(SmsTemplateTypeEnum.PROMOTION.getType());
             o.setStatus(CommonStatusEnum.ENABLE.getStatus());
             o.setCode("tudou");
-            o.setContent("万界星空科技");
+            o.setContent("MES");
             o.setApiTemplateId("metaxk");
             o.setChannelId(1L);
             o.setCreateTime(buildTime(2021, 11, 11));
@@ -266,7 +266,7 @@ public class SmsTemplateServiceImplTest extends BaseDbUnitTest {
         reqVO.setType(SmsTemplateTypeEnum.PROMOTION.getType());
         reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
         reqVO.setCode("tu");
-        reqVO.setContent("万界星空科技");
+        reqVO.setContent("MES");
         reqVO.setApiTemplateId("metaxk");
         reqVO.setChannelId(1L);
         reqVO.setCreateTime(buildBetweenTime(2021, 11, 1, 2021, 12, 1));

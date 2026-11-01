@@ -1,48 +1,28 @@
-### free mes open source mes Manufacturing Execution System
-# 市面上超级好用的开源MES，支持二开
-### 技术架构：Springboot2+ VUE3 + Mysql8 + Redis + Minio，也有SpringCloud版本
-### 开源不易，努力坚持！记得 Star，不要白嫖~
+# MES 部署
 
-### 目录介绍：
-#### 部署和文档：基于docker的各种部署方式和使用手册
-#### source-code：核心框架、前、后端源代码
+服务器需要 Linux x86-64、Docker 和 Docker Compose 插件，并能够访问 GitHub 和 GitHub Container Registry。首次部署前，请确认 GitHub Actions 的镜像构建已成功，且三个镜像包允许服务器拉取（匿名拉取需要将包设为 Public）。
 
-### 建议安装在Ubuntu Server 22.04服务器上，需要懂技术的哦
+部署：
 
-## 开源版不再提供演示、不提供技术支持与问题解答，请自行下载源码编译运行
+```sh
+curl -fsSL https://raw.githubusercontent.com/zxgad3wdasaq1e-ai/free-mes/v1.0.0/deploy/mes.sh | sh -s -- deploy
+```
 
-## 如需商业版请联系我们（商业版与开源版完全不是一个平台）：17898898894
+更新：
 
+```sh
+curl -fsSL https://raw.githubusercontent.com/zxgad3wdasaq1e-ai/free-mes/v1.0.0/deploy/mes.sh | sh -s -- update
+```
 
-## MES系统流程图
-<img width="1360" alt="image" src="./images/系统流程图.jpg">
+部署完成后访问 `http://服务器IP:8080`。首次初始化需要几分钟。默认租户为 `MES`，管理员用户名为 `admin`，初始密码为 `111111`；登录后请立即修改密码。确保服务器防火墙放行 8080 端口。
 
-## MES功能架构图
-<img width="1360" alt="image" src="./images/MES功能架构图.jpg">
+部署文件位于 `/opt/free-mes`，数据库、Redis 和上传文件存放在 Docker 卷中。更新会保留这些数据，不会重新导入初始化数据库；更新前请先备份数据。修改监听端口可在首次部署时执行 `export MES_PORT=端口号`，之后重新执行部署命令。
 
-## MES排产功能图
-<img width="1360" alt="image" src="./images/排产功能图.jpg">
+查看服务状态和日志：
 
-## 排班日历
-<img width="1360" alt="image" src="./images/排班日历.png">
+```sh
+cd /opt/free-mes && docker compose ps
+cd /opt/free-mes && docker compose logs -f --tail=100
+```
 
-## 排班计划
-<img width="1309" alt="image" src="./images/排班计划.png">
-
-## 生产订单
-<img width="1368" alt="image" src="./images/生产订单.png">
-
-## 生产排产
-<img width="1383" alt="image" src="./images/生产排产.png">
-
-## 生产任务
-<img width="1320" alt="image" src="./images/生产任务.png">
-
-## 生产报工
-<img width="1389" alt="image" src="./images/生产报工.png">
-
-## 数据大屏1
-<img width="1360" alt="image" src="./images/数据大屏1.jpg">
-
-## 数据大屏2
-<img width="1360" alt="image" src="./images/数据大屏2.jpg">
+首次安装会生成数据库密码并保存在 `/opt/free-mes/.env`。请妥善保管该文件。项目许可证见 [LICENSE](LICENSE)。

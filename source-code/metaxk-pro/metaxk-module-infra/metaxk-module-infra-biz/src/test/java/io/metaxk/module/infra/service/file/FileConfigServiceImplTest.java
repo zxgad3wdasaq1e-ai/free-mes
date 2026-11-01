@@ -89,7 +89,7 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
     public void testCreateFileConfig_success() {
         // 准备参数
         Map<String, Object> config = MapUtil.<String, Object>builder().put("basePath", "/metaxk")
-                .put("domain", "https://www.metaxk.io").build();
+                .put("domain", "https://example.com").build();
         FileConfigCreateReqVO reqVO = randomPojo(FileConfigCreateReqVO.class,
                 o -> o.setStorage(FileStorageEnum.LOCAL.getStorage()).setConfig(config));
 
@@ -102,7 +102,7 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
         assertPojoEquals(reqVO, fileConfig, "config");
         assertFalse(fileConfig.getMaster());
         assertEquals("/metaxk", ((LocalFileClientConfig) fileConfig.getConfig()).getBasePath());
-        assertEquals("https://www.metaxk.io", ((LocalFileClientConfig) fileConfig.getConfig()).getDomain());
+        assertEquals("https://example.com", ((LocalFileClientConfig) fileConfig.getConfig()).getDomain());
         // verify 调用
         verify(fileConfigProducer).sendFileConfigRefreshMessage();
     }
@@ -111,13 +111,13 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
     public void testUpdateFileConfig_success() {
         // mock 数据
         FileConfigDO dbFileConfig = randomPojo(FileConfigDO.class, o -> o.setStorage(FileStorageEnum.LOCAL.getStorage())
-                .setConfig(new LocalFileClientConfig().setBasePath("/metaxk").setDomain("https://www.metaxk.io")));
+                .setConfig(new LocalFileClientConfig().setBasePath("/metaxk").setDomain("https://example.com")));
         fileConfigMapper.insert(dbFileConfig);// @Sql: 先插入出一条存在的数据
         // 准备参数
         FileConfigUpdateReqVO reqVO = randomPojo(FileConfigUpdateReqVO.class, o -> {
             o.setId(dbFileConfig.getId()); // 设置更新的 ID
             Map<String, Object> config = MapUtil.<String, Object>builder().put("basePath", "/metaxk2")
-                    .put("domain", "https://doc.metaxk.io").build();
+                    .put("domain", "https://example.com").build();
             o.setConfig(config);
         });
 
@@ -127,7 +127,7 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
         FileConfigDO fileConfig = fileConfigMapper.selectById(reqVO.getId()); // 获取最新的
         assertPojoEquals(reqVO, fileConfig, "config");
         assertEquals("/metaxk2", ((LocalFileClientConfig) fileConfig.getConfig()).getBasePath());
-        assertEquals("https://doc.metaxk.io", ((LocalFileClientConfig) fileConfig.getConfig()).getDomain());
+        assertEquals("https://example.com", ((LocalFileClientConfig) fileConfig.getConfig()).getDomain());
         // verify 调用
         verify(fileConfigProducer).sendFileConfigRefreshMessage();
     }
@@ -204,7 +204,7 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
     @Test
     public void testGetFileConfigPage() {
        // mock 数据
-       FileConfigDO dbFileConfig = randomFileConfigDO().setName("万界星空科技")
+       FileConfigDO dbFileConfig = randomFileConfigDO().setName("MES")
                .setStorage(FileStorageEnum.LOCAL.getStorage());
        dbFileConfig.setCreateTime(LocalDateTimeUtil.parse("2020-01-23", DatePattern.NORM_DATE_PATTERN));// 等会查询到
        fileConfigMapper.insert(dbFileConfig);
@@ -216,7 +216,7 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
        fileConfigMapper.insert(cloneIgnoreId(dbFileConfig, o -> o.setCreateTime(LocalDateTimeUtil.parse("2020-11-23", DatePattern.NORM_DATE_PATTERN))));
        // 准备参数
        FileConfigPageReqVO reqVO = new FileConfigPageReqVO();
-       reqVO.setName("万界星空科技");
+       reqVO.setName("MES");
        reqVO.setStorage(FileStorageEnum.LOCAL.getStorage());
        reqVO.setCreateTime((new LocalDateTime[]{buildTime(2020, 1, 1),
                buildTime(2020, 1, 24)}));
@@ -239,10 +239,10 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
         // mock 获得 Client
         FileClient fileClient = mock(FileClient.class);
         when(fileClientFactory.getFileClient(eq(id))).thenReturn(fileClient);
-        when(fileClient.upload(any(), any(), any())).thenReturn("https://www.metaxk.io");
+        when(fileClient.upload(any(), any(), any())).thenReturn("https://example.com");
 
         // 调用，并断言
-        assertEquals("https://www.metaxk.io", fileConfigService.testFileConfig(id));
+        assertEquals("https://example.com", fileConfigService.testFileConfig(id));
     }
 
     @Test

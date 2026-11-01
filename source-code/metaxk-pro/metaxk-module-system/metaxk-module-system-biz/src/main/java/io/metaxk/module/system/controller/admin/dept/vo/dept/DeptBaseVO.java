@@ -14,12 +14,12 @@ import javax.validation.constraints.Size;
 @Data
 public class DeptBaseVO {
 
-    @Schema(description = "菜单编号", required = true, example = "万界星空科技")
+    @Schema(description = "菜单编号", required = true, example = "MES")
     @NotBlank(message = "部门编号不能为空")
     @Size(max = 30, message = "部门编号长度不能超过30个字符")
     private String number;
 
-    @Schema(description = "菜单名称", required = true, example = "万界星空科技")
+    @Schema(description = "菜单名称", required = true, example = "MES")
     @NotBlank(message = "部门名称不能为空")
     @Size(max = 30, message = "部门名称长度不能超过30个字符")
     private String name;
@@ -38,7 +38,7 @@ public class DeptBaseVO {
     @Size(max = 11, message = "联系电话长度不能超过11个字符")
     private String phone;
 
-    @Schema(description = "邮箱", example = "metaxk@metaxk.io")
+    @Schema(description = "邮箱", example = "user@example.com")
     @Email(message = "邮箱格式不正确")
     @Size(max = 50, message = "邮箱长度不能超过50个字符")
     private String email;

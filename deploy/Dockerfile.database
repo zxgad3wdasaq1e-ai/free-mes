@@ -1,0 +1,4 @@
+FROM mariadb:10.11
+COPY ["部署和文档/data/sql/init.sql", "/docker-entrypoint-initdb.d/10-init.sql"]
+RUN sed -i '1{/^use mes-pro;/d;}' /docker-entrypoint-initdb.d/10-init.sql
+COPY deploy/20-storage.sql /docker-entrypoint-initdb.d/20-storage.sql

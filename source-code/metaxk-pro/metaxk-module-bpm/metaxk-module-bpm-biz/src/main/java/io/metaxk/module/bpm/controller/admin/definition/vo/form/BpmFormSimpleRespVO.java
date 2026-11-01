@@ -10,7 +10,7 @@ public class BpmFormSimpleRespVO {
     @Schema(description = "表单编号", required = true, example = "1024")
     private Long id;
 
-    @Schema(description = "表单名称", required = true, example = "万界星空科技")
+    @Schema(description = "表单名称", required = true, example = "MES")
     private String name;
 
 }

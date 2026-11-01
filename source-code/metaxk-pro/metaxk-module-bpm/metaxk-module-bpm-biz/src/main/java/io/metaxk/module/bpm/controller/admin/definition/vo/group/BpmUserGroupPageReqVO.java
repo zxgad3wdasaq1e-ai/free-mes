@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @ToString(callSuper = true)
 public class BpmUserGroupPageReqVO extends PageParam {
 
-    @Schema(description = "组名", example = "万界星空科技")
+    @Schema(description = "组名", example = "MES")
     private String name;
 
     @Schema(description = "状态", example = "1")

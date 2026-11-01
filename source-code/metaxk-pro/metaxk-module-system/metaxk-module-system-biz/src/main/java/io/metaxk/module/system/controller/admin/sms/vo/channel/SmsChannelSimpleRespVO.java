@@ -13,7 +13,7 @@ public class SmsChannelSimpleRespVO {
     @NotNull(message = "编号不能为空")
     private Long id;
 
-    @Schema(description = "短信签名", required = true, example = "万界星空科技")
+    @Schema(description = "短信签名", required = true, example = "MES")
     @NotNull(message = "短信签名不能为空")
     private String signature;
 

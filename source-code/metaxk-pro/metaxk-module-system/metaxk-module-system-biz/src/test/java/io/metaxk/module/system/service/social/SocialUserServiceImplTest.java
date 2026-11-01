@@ -59,12 +59,12 @@ public class SocialUserServiceImplTest extends BaseDbAndRedisUnitTest {
             when(authRequestFactory.get(eq("WECHAT_MP"))).thenReturn(authRequest);
             // mock 方法
             authStateUtilsMock.when(AuthStateUtils::createState).thenReturn("aoteman");
-            when(authRequest.authorize(eq("aoteman"))).thenReturn("https://www.metaxk.io?redirect_uri=yyy");
+            when(authRequest.authorize(eq("aoteman"))).thenReturn("https://example.com?redirect_uri=yyy");
 
             // 调用
             String url = socialUserService.getAuthorizeUrl(type, redirectUri);
             // 断言
-            assertEquals("https://www.metaxk.io?redirect_uri=sss", url);
+            assertEquals("https://example.com?redirect_uri=sss", url);
         }
     }
 

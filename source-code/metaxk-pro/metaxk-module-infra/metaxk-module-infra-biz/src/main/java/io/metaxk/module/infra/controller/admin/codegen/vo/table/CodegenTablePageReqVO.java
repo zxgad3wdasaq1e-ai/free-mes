@@ -20,7 +20,7 @@ public class CodegenTablePageReqVO extends PageParam {
     @Schema(description = "表名称,模糊匹配", example = "metaxk")
     private String tableName;
 
-    @Schema(description = "表描述,模糊匹配", example = "万界星空科技")
+    @Schema(description = "表描述,模糊匹配", example = "MES")
     private String tableComment;
 
     @Schema(description = "创建时间", example = "[2022-07-01 00:00:00,2022-07-01 23:59:59]")
