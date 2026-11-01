@@ -19,7 +19,11 @@ cd "$install_dir"
 umask 077
 if [ ! -f .env ]; then
   db_password=$(od -An -N24 -tx1 /dev/urandom | tr -d ' \n')
-  printf 'DB_PASSWORD=%s\nMES_PORT=%s\n' "$db_password" "${MES_PORT:-8080}" > .env
+  printf 'DB_PASSWORD=%s\nMES_PORT=%s\n' "$db_password" "${MES_PORT:-1111}" > .env
+elif grep -qx 'MES_PORT=8080' .env; then
+  # Migrate the previous default while keeping explicitly customized ports.
+  sed 's/^MES_PORT=8080$/MES_PORT=1111/' .env > .env.new
+  mv .env.new .env
 fi
 curl -fsSL "$base_url/compose.yml" -o compose.yml.new
 mv compose.yml.new compose.yml

@@ -50,7 +50,7 @@ services:
     image: ghcr.io/zxgad3wdasaq1e-ai/free-mes-frontend:v1.0.0
     restart: unless-stopped
     ports:
-      - "${MES_PORT:-8080}:80"
+      - "${MES_PORT:-1111}:80"
     depends_on:
       - backend
 volumes:

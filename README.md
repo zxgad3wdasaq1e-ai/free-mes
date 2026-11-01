@@ -14,9 +14,9 @@ curl -fsSL https://raw.githubusercontent.com/zxgad3wdasaq1e-ai/free-mes/v1.0.0/d
 curl -fsSL https://raw.githubusercontent.com/zxgad3wdasaq1e-ai/free-mes/v1.0.0/deploy/mes.sh | sh -s -- update
 ```
 
-部署完成后访问 `http://服务器IP:8080`。首次初始化需要几分钟。默认租户为 `MES`，管理员用户名为 `admin`，初始密码为 `111111`；登录后请立即修改密码。确保服务器防火墙放行 8080 端口。
+部署完成后访问 `http://服务器IP:1111`。首次初始化需要几分钟。默认租户为 `MES`，管理员用户名为 `admin`，初始密码为 `111111`；登录后请立即修改密码。确保服务器防火墙和云服务商安全组放行 1111 端口。
 
-部署文件位于 `/opt/free-mes`，数据库、Redis 和上传文件存放在 Docker 卷中。更新会保留这些数据，不会重新导入初始化数据库；更新前请先备份数据。修改监听端口可在首次部署时执行 `export MES_PORT=端口号`，之后重新执行部署命令。
+部署文件位于 `/opt/free-mes`，数据库、Redis 和上传文件存放在 Docker 卷中。更新会保留这些数据，不会重新导入初始化数据库；更新前请先备份数据。更新时原默认端口 8080 会自动改为 1111，其他自定义端口保持不变。首次部署时可执行 `export MES_PORT=端口号` 指定其他端口。
 
 查看服务状态和日志：
 
